@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerFrg" id="original">
+    <meta charset="UTF-8" />
+    <title>My app</title>
+</head>
+
+<th:block th:fragment="myLinks"> // temp holder for lists.html
+    <script>
+        console.log("chris");
+    </script>
+</th:block>
+
+
+<th:block th:fragment="someCSS">
+    <link th:if="${role=='admin'}" rel="stylesheet" href="/css/admin.css" /> // all available in static folder
+    <link th:if="${role!='admin'}" rel="stylesheet" href="/css/user.css" />
+</th:block>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Results</title>
+</head>
+<body>
+    <h1>Your guesses</h1>
+    <h3 th:text="${guess}"></h3>
+
+    <h1>Match random number = <span th:text="${rand}"></span></h1>
+
+    <div th:if="${guess == rand}">
+        <h1>Correct!!!</h1>
+    </div>
+
+    <div th:if="${guess != rand}">
+        <h1>Incorrect, guess again</h1>
+        <a href="/roll-dice">Guess again</a>
+    </div>
+
+</body>
+</html>

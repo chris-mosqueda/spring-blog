@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <div th:replace="fragments/header :: headerFrg"></div>
+    <!--<div th:replace=""-->
+</head>
+<body>
+
+    List of Names:
+    <ul> <!--  <ul th:if="false">  will not show the whole list-->
+        <li th:each="name: ${listOfNames}" th:text="${name}" th:if="${'chris' == name}"></li>
+    </ul>
+
+    <div th:if="${true}"> // th:if HLEPS WITH RENDERING, WILL NOT RENDER IF IT IS FALSE
+        this gets shown
+    </div>
+    <div th:if="${false}">
+        this does not get shown
+    </div>
+
+
+    <input id="myHiddenData" type="hidden" th:value="${listOfNames}" /> // can use Javascript to target 'id'
+
+    <div th:replace="fragments/header :: myLinks"></div>
+</body>
+</html>

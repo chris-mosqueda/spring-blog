@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Blog Home')"></head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container">
+        <h1>Home</h1>
+        <div th:each="post : ${posts}">
+            <h2 th:text="${post.title}"></h2>
+            <p th:text="${post.body}"></p>
+        </div>
+
+    </div>
+
+    <!--<scripts th:replace="fragments/scripts :: scripts"></scripts>-->
+    <footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
