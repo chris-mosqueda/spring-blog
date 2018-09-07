@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Shapes length, area')"></head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container">
+        <h1>Square Properties</h1>
+            <p>Perimeter: <span th:text="${sqrPerim}"></span></p>
+            <p>Area: <span th:text="${sqrArea}"></span></p>
+            <p>Volume: <span th:text="${sqrVol}"></span></p>
+
+        <h1>Circle Properties</h1>
+            <p>Circumference: <span th:text="${circleCirc}"></span></p>
+            <p>Area: <span th:text="${circArea}"></span></p>
+    </div>
+</body>
+</html>

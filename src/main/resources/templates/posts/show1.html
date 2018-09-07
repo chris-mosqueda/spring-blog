@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('View Single Post')"></head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container">
+        <h1>This show 1 posts page</h1>
+        <div th:each="view1: ${post}">
+            <h1 th:text="${post.title}"></h1>
+            <p th:text="${post.body}"></p>
+        </div>
+    </div>
+</body>
+</html>

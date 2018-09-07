@@ -1,4 +1,4 @@
-package com.blog.blog;
+package com.blog.blog.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +19,6 @@ public class RoleDiceController {
         viewModel.addAttribute("rand", getRandomNumber());
 
         viewModel.addAttribute("guess", num);
-
         return "guessedNum";
     }
 
