@@ -5,11 +5,16 @@
     <div th:replace="fragments/navbar :: navbar"></div>
     <div class="container">
         <h1>Home</h1>
-        <div th:each="post : ${posts}">
-            <h2 th:text="${post.title}"></h2>
-            <p th:text="${post.body}"></p>
-        </div>
+        <div class="row">
 
+            <div th:each="post : ${posts}" class=" postCard" style="border: 1px solid black; margin: 15px; padding: 15px; width: 350px;">
+                <h2 th:text="${post.title}"></h2>
+                <p th:text="${post.body}"></p>
+                <p th:text="${post.id}"></p>
+                <a th:href="@{/posts/{id}/edit(id=${post.id})}" class="btn btn-outline-secondary" role="button"> Edit</a> &nbsp; <a th:href="@{/posts/{id}(id=${post.id})}" class="btn btn-outline-secondary" role="button">View</a>
+                <a th:href="@{/posts/delete/{id}(id=${post.id})}" class="btn btn-outline-danger float-right" role="button">Delete</a>
+            </div>
+        </div>
     </div>
 
     <!--<scripts th:replace="fragments/scripts :: scripts"></scripts>-->

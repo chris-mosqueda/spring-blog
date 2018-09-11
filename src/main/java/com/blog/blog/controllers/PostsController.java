@@ -41,13 +41,25 @@ public class PostsController {
         // return "redirect:/ads/" + post.getId();
         // return "redirect:/ads"; => will route to all ads view
         return "redirect:/posts"; // REDIRECT IS => a url
-
     }
 
-//    @GetMapping("/posts/{id}/edit")
-//    public String postEditForm(@PathVariable long id, Model vModel) {
-//        vModel.addAllAttributes("post", postServ.findOne(id));
-//
-//    }
+    @GetMapping("/posts/{id}/edit")
+    public String postEditForm(@PathVariable long id, Model vModel) {
+        vModel.addAttribute("post", postServ.findOne(id));
+        return "posts/editPost";
+    }
+
+    @PostMapping("/posts/{id}/edit")
+    public String updatePost(@ModelAttribute Post post) {
+        postServ.save(post);
+        return "redirect:/posts";
+    }
+
+
+    @GetMapping("/posts/delete/{num}")
+    public String deletePost(@PathVariable String num) {
+        postServ.deletePosts(Long.parseLong(num));
+        return "redirect:/posts";
+    }
 
 }
