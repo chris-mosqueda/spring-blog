@@ -8,8 +8,10 @@ import java.util.List;
 
 @Service
 public class PostService {
+    // auto-wire Repo, w/ variable
     PostRepository postDao;
 
+    // Constructor for PostRepo above
     public PostService(PostRepository postDao) {
         this.postDao = postDao;
     }

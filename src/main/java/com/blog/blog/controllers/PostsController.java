@@ -51,6 +51,7 @@ public class PostsController {
 
     @PostMapping("/posts/{id}/edit")
     public String updatePost(@ModelAttribute Post post) {
+        // needs the {id} to update/ save
         postServ.save(post);
         return "redirect:/posts";
     }
@@ -61,5 +62,12 @@ public class PostsController {
         postServ.deletePosts(Long.parseLong(num));
         return "redirect:/posts";
     }
+
+    // CHANGE DELETE TO USE A POST FORM FOR DELETE BTN
+//    @PostMapping("/posts/delete") // gets name param(id) from the form
+//    public String deletePost(@RequestParam(name = "id") long id) {
+//        postServ.deletePosts(id);
+//        return "redirect:/posts";
+//    }
 
 }

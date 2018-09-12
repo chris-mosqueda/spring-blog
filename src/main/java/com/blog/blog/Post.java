@@ -16,6 +16,8 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
+
+
 //    @Column(columnDefinition = "VARCHAR(200) NOT NULL DEFAULT")
 //    private String callToAction;
 
