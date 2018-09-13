@@ -5,10 +5,12 @@
     <div th:replace="fragments/navbar :: navbar"></div>
     <div class="container">
         <h1>This show 1 posts page</h1>
-        <div th:each="view1: ${post}">
             <h1 th:text="${post.title}"></h1>
             <p th:text="${post.body}"></p>
-        </div>
+
+            <p>User's email:</p>
+            <p th:text="${post.user.email}"></p>
+
     </div>
 </body>
 </html>

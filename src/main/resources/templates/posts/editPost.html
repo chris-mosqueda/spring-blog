@@ -17,6 +17,10 @@
             </div>
             <button class="btn btn-outline-secondary" type="submit">Submit</button>
         </form>
+        <form th:action="@{/posts/delete/}" th:method="POST" class="float-right">
+            <input type="hidden" th:value="${post.id}" name="id" />
+            <button class="btn btn-outline-danger">Delete</button>
+        </form>
     </div>
 </body>
 </html>

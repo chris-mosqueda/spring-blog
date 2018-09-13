@@ -34,20 +34,20 @@ public class JpaTestController {
         return output;
     }
 
-    @GetMapping("/jpa/create")
-    @ResponseBody
-    public String jpaCreateTest() {
-        Post post = new Post("new p 3", "Test testy post");
-        return jpaFindAllTest();
-    }
-
-    @GetMapping("/jpa/update")
-    @ResponseBody
-    public String jpaUpdateeTest() {
-        Post post = new Post(2,"update 2post", "This is update 2post");
-        postDao.save(post);
-        return jpaFindAllTest();
-    }
+//    @GetMapping("/jpa/create")
+//    @ResponseBody
+//    public String jpaCreateTest() {
+//        Post post = new Post("new p 3", "Test testy post");
+//        return jpaFindAllTest();
+//    }
+//
+//    @GetMapping("/jpa/update")
+//    @ResponseBody
+//    public String jpaUpdateeTest() {
+//        Post post = new Post(2,"update 2post", "This is update 2post");
+//        postDao.save(post);
+//        return jpaFindAllTest();
+//    }
 
     @GetMapping("/jpa/delete")
     @ResponseBody

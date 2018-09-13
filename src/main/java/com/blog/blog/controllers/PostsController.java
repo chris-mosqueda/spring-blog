@@ -1,6 +1,8 @@
 package com.blog.blog.controllers;
 
 import com.blog.blog.Post;
+import com.blog.blog.User;
+import com.blog.blog.repositories.UserRepository;
 import com.blog.blog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,9 +12,11 @@ import org.springframework.web.bind.annotation.*;
 // Controller does not does not know about Lists
 public class PostsController {
     private final PostService postServ; // has lists of posts
+    private final UserRepository userRepo;
 
-    public PostsController(PostService postServ) {
+    public PostsController(PostService postServ, UserRepository userRepo) {
         this.postServ = postServ;
+        this.userRepo = userRepo;
     }
 
     @GetMapping("/posts")
@@ -25,6 +29,9 @@ public class PostsController {
     public String showPost(@PathVariable long id, Model vModel) {
         Post post = postServ.findOne(id);
         vModel.addAttribute("post", post);
+//
+//        User user = userRepo.findOne((long) 1);
+//        vModel.addAttribute("user", user);
         return "posts/show1";
     }
 
@@ -36,7 +43,9 @@ public class PostsController {
 
     // When form is submitted, a Post Obj is created
     @PostMapping("posts/save")
+    // uses form binding with @ModelAttribute
     public String createAd(@ModelAttribute Post post) {
+        post.setUser(userRepo.findOne((long) 2));
         postServ.save(post);
         // return "redirect:/ads/" + post.getId();
         // return "redirect:/ads"; => will route to all ads view
@@ -56,18 +65,18 @@ public class PostsController {
         return "redirect:/posts";
     }
 
-
-    @GetMapping("/posts/delete/{num}")
-    public String deletePost(@PathVariable String num) {
-        postServ.deletePosts(Long.parseLong(num));
+    @PostMapping("/posts/delete") // gets name param(id) from the form
+    public String deletePost(@RequestParam(name = "id") long id) {
+        postServ.deletePosts(id);
         return "redirect:/posts";
     }
 
-    // CHANGE DELETE TO USE A POST FORM FOR DELETE BTN
-//    @PostMapping("/posts/delete") // gets name param(id) from the form
-//    public String deletePost(@RequestParam(name = "id") long id) {
-//        postServ.deletePosts(id);
-//        return "redirect:/posts";
+//    @GetMapping("find-user/{usern}")
+//    public String findUser(@PathVariable String usern) {
+//        User user = userRepo.findByUsername(usern);
+//
+////        System.out.println("user.getEmail() = " + user.getEmail()); // to test
+//
+//        return "";
 //    }
-
 }
