@@ -1,6 +1,6 @@
 package com.blog.blog.services;
 
-import com.blog.blog.Post;
+import com.blog.blog.models.Post;
 import com.blog.blog.repositories.PostRepository;
 import org.springframework.stereotype.Service;
 

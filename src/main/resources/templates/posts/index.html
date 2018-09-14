@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="fragments/head :: head('Blog Home')"></head>
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
@@ -14,7 +14,7 @@
                 <a th:href="@{/posts/{id}/edit(id=${post.id})}" class="btn btn-outline-secondary" role="button"> Edit</a>
                 <a th:href="@{/posts/{id}(id=${post.id})}" class="btn btn-outline-secondary float-right" role="button">View</a>
 
-                <!--<a th:href="@{/posts/delete/{id}(id=${post.id})}" class="btn btn-outline-danger float-right" role="button">Delete</a>-->
+                <p>Created by: <span th:text="${post.user.username}"></span></p>
             </div>
         </div>
     </div>

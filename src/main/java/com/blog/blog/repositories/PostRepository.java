@@ -1,7 +1,6 @@
 package com.blog.blog.repositories;
 
-import com.blog.blog.Post;
-import org.springframework.data.jpa.repository.Query;
+import com.blog.blog.models.Post;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

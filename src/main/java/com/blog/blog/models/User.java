@@ -1,6 +1,6 @@
-package com.blog.blog;
+package com.blog.blog.models;
 
-import com.blog.blog.Post;
+import com.blog.blog.models.Post;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,8 +15,8 @@ public class User {
     @Column(nullable = false, length = 100, unique = true)
     private String username;
 
-    @Column(nullable = false, length = 100)
-    private String passowrd;
+    @Column(nullable = false, length = 100, unique = true)
+    private String password;
 
     @Column(nullable = false, length = 100)
     private String email;
@@ -27,17 +27,24 @@ public class User {
     public User() {
     }
 
-    public User(String username, String passowrd, String email, List<Post> posts) {
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
+    public User(String username, String password, String email, List<Post> posts) {
         this.username = username;
-        this.passowrd = passowrd;
+        this.password = password;
         this.email = email;
         this.posts = posts;
     }
 
-    public User(long id, String username, String passowrd, String email, List<Post> posts) {
+    public User(long id, String username, String password, String email, List<Post> posts) {
         this.id = id;
         this.username = username;
-        this.passowrd = passowrd;
+        this.password = password;
         this.email = email;
         this.posts = posts;
     }
@@ -58,12 +65,12 @@ public class User {
         this.username = username;
     }
 
-    public String getPassowrd() {
-        return passowrd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassowrd(String passowrd) {
-        this.passowrd = passowrd;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {

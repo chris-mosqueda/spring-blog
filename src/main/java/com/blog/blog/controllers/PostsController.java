@@ -1,9 +1,11 @@
 package com.blog.blog.controllers;
 
-import com.blog.blog.Post;
-import com.blog.blog.User;
+import com.blog.blog.models.Post;
+import com.blog.blog.models.User;
 import com.blog.blog.repositories.UserRepository;
 import com.blog.blog.services.PostService;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ public class PostsController {
 
     @GetMapping("/posts")
     public String showAll(Model vModel) {
+
         vModel.addAttribute("posts", postServ.findAll());
         return "posts/index";
     }
@@ -29,7 +32,6 @@ public class PostsController {
     public String showPost(@PathVariable long id, Model vModel) {
         Post post = postServ.findOne(id);
         vModel.addAttribute("post", post);
-//
 //        User user = userRepo.findOne((long) 1);
 //        vModel.addAttribute("user", user);
         return "posts/show1";
@@ -45,7 +47,9 @@ public class PostsController {
     @PostMapping("posts/save")
     // uses form binding with @ModelAttribute
     public String createAd(@ModelAttribute Post post) {
-        post.setUser(userRepo.findOne((long) 2));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        post.setUser(userRepo.findOne((user.getId())));
         postServ.save(post);
         // return "redirect:/ads/" + post.getId();
         // return "redirect:/ads"; => will route to all ads view

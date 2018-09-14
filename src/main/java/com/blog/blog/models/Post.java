@@ -1,4 +1,4 @@
-package com.blog.blog;
+package com.blog.blog.models;
 
 import javax.persistence.*;
 

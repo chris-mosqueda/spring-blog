@@ -7,10 +7,8 @@
         <h1>This show 1 posts page</h1>
             <h1 th:text="${post.title}"></h1>
             <p th:text="${post.body}"></p>
-
-            <p>User's email:</p>
-            <p th:text="${post.user.email}"></p>
-
+            <p>Created by: <span th:text="${post.user.username}"></span></p>
+            <p>User's email: <span th:text="${post.user.email}"></span></p>
     </div>
 </body>
 </html>
